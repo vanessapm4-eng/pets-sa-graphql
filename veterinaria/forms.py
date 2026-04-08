@@ -1,7 +1,7 @@
 from django import forms
 from .models import Mascota, Cliente, Medicamento
 
-
+#validar los datos antes de guardarlos 
 class MedicamentoForm(forms.ModelForm):
     class Meta:
         model = Medicamento

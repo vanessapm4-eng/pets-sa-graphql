@@ -5,8 +5,8 @@ from .models import Mascota, Cliente, Medicamento
 from .forms import MascotaForm, ClienteForm, MedicamentoForm
 from .services import MascotaService, ClienteService, MedicamentoService
 
+#recibe las peticiones del usuario y devuelve las respuestas
 
-# DASHBOARD
 def dashboard(request):
     context = {
         'total_mascotas': Mascota.objects.count(),
@@ -16,7 +16,6 @@ def dashboard(request):
     return render(request, 'veterinaria/dashboard.html', context)
 
 
-# MASCOTAS
 def mascota_lista(request):
     mascotas = MascotaService.listar_todas()
     objetos = []
@@ -70,7 +69,7 @@ def mascota_eliminar(request, pk):
     return render(request, 'veterinaria/confirmar_eliminar.html', {'objeto': mascota})
 
 
-# CLIENTES
+
 def cliente_lista(request):
     clientes = ClienteService.listar_todos()
     objetos = []
@@ -124,7 +123,6 @@ def cliente_eliminar(request, pk):
     return render(request, 'veterinaria/confirmar_eliminar.html', {'objeto': cliente})
 
 
-# MEDICAMENTOS
 def medicamento_lista(request):
     medicamentos = MedicamentoService.listar_todos()
     objetos = []
@@ -158,7 +156,7 @@ def medicamento_editar(request, pk):
     medicamento = get_object_or_404(Medicamento, pk=pk)
     if request.method == 'POST':
         form = MedicamentoForm(request.POST, instance=medicamento)
-        if form.is_valid():
+        if form.is_valid():  # Django valida los datos y ejecuta un INSERT en la base de datos automáticamente
             form.save()
             messages.success(request, 'Medicamento actualizado.')
             return redirect('medicamento_lista')

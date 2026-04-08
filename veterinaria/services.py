@@ -1,7 +1,7 @@
 from django.db.models import Q, Count
 from .models import Mascota, Cliente, Medicamento
 
-
+#lógica del negocio
 class MascotaService:
 
     @staticmethod
@@ -64,7 +64,7 @@ class ClienteService:
 
     @staticmethod
     def reporte():
-        return Cliente.objects.annotate(
+        return Cliente.objects.annotate( #agregarle a cada cliente un campo extra que cuenta cuántas mascotas tiene. Luego los ordeno de mayor a meno
             total_mascotas=Count('mascotas')
         ).prefetch_related('mascotas__medicamento').order_by('-total_mascotas')
 

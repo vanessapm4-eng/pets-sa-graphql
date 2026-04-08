@@ -1,6 +1,6 @@
 from django.db import models
 
-
+# tablas para la bd
 class Medicamento(models.Model):
     nombre = models.CharField(max_length=100, verbose_name="Nombre")
     descripcion = models.TextField(verbose_name="Descripción")
@@ -33,7 +33,7 @@ class Cliente(models.Model):
         return f"{self.nombres} {self.apellidos}"
 
 
-class Mascota(models.Model):
+class Mascota(models.Model): #conecta la mascota con su cliente y su medicamento
     identificacion = models.CharField(max_length=20, unique=True, verbose_name="Identificación")
     nombre = models.CharField(max_length=100, verbose_name="Nombre")
     raza = models.CharField(max_length=100, verbose_name="Raza")
@@ -44,7 +44,7 @@ class Mascota(models.Model):
         verbose_name="Medicamento", related_name="mascotas"
     )
     cliente = models.ForeignKey(
-        Cliente, on_delete=models.CASCADE,
+        Cliente, on_delete=models.CASCADE, #si elimino un cl tambien se elimina su mascota 
         verbose_name="Cliente", related_name="mascotas"
     )
 

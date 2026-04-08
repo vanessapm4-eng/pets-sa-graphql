@@ -3,12 +3,12 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}PETS S.A.{% endblock %}</title>
+    <title>{% block title %}PETS S.A.{% endblock %}</title> 
     <link rel="stylesheet" href="{% static 'estilos.css' %}">
 </head>
 <body>
 <nav>
-    <a href="{% url 'dashboard' %}">🐾 PETS S.A.</a>
+    <a href="{% url 'dashboard' %}"> PETS S.A.</a>
     <a href="{% url 'mascota_lista' %}">Mascotas</a>
     <a href="{% url 'cliente_lista' %}">Clientes</a>
     <a href="{% url 'medicamento_lista' %}">Medicamentos</a>
@@ -19,7 +19,7 @@
     {% for message in messages %}
         <div class="alert">{{ message }}</div>
     {% endfor %}
-    {% block content %}{% endblock %}
+    {% block content %}{% endblock %} <!-- Este bloque es donde cada página inserta su contenido. Así todos los templates comparten el mismo menú y estilos sin repetir código -->
 </div>
 </body>
 </html>
