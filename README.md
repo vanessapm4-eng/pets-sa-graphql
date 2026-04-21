@@ -24,13 +24,15 @@ query {
     edad
   }
 }
+```
 ## Mutation 
-mutation {
+```mutation {
   crearMascota(nombre: "Luna", edad: 3) {
     id
     nombre
   }
 }
+```
 Estado del proyecto: 
 Proyecto académico en desarrollo
 
