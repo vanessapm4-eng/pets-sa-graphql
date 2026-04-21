@@ -26,7 +26,8 @@ query {
 }
 ```
 ## Mutation 
-```mutation {
+```
+mutation {
   crearMascota(nombre: "Luna", edad: 3) {
     id
     nombre
